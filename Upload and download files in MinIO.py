@@ -35,35 +35,34 @@ def uploadfile(client):
 def downloadfile(client):
     print("'downloadfile' function called")
 
-    # Choose bucket name, object name and file path
+	# Choose bucket from existing buckets
+    buckets = client.list_buckets()
+    print("Existing buckets:")
+    for bucket in buckets:
+        print(bucket.name)
+        
+    # Choose bucket name
     BucketName = input("Insert bucket name: ")
-    ObjectName = input("Insert object name: ")
-    FilePath = input("Insert file path: ")
 
     # Verify if BucketName already exists
     found = client.bucket_exists(BucketName)
     if not found:
-        client.make_bucket(BucketName)
-    else:
-        print(f"Bucket {BucketName} already exists")
-
-    # Upload object from existing file into selected bucket
-    client.fput_object(
-        BucketName, ObjectName, FilePath,
-    )
-    print(
-        f"{FilePath} is successfully downloaded as"
-        f"object {ObjectName} to bucket {BucketName}."
-    )
+        print(f"Bucket {BucketName} not found.")
+        return False
+    
+    objects = client.list_objects(BucketName)
+    for obj in objects:
+    	print(obj)
 
 
 def main():
     # Create a client with the MinIO server playground, 
     # its access key and secret key.
     client = Minio(
-        "http://127.0.0.1:9000",
+        "127.0.0.1:9000",
         access_key="minioadmin",
         secret_key="minioadmin",
+        secure=False
     )
 
     # Menu options
@@ -73,11 +72,11 @@ def main():
     while(True):
         print("'main' function called")
 
-        ChosenOption = input(
+        ChosenOption = int(input(
             "Choose which you prefer:\n"
             "1) Upload file\n"
             "2) Download file\n"
-            "Else, end running program")
+            "Else, end running program.\n"))
         try:
             menu[ChosenOption](client)
         except KeyError:

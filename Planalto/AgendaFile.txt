@@ -1,0 +1,8 @@
+datetime;dia;mes;ano;diadasemana;hora;local;evento;
+2023-04-18 22:08:52.224462;18;ABR;2023;Ter;09h00;Palácio do Planalto;Ministro da Secretaria-Geral, Márcio Macêdo, Ministro da Secretaria de Relações Institucionais, Alexandre Padilha, e Ministro da Secretaria de Comunicação Social, Paulo Pimenta;
+2023-04-18 22:08:52.225463;18;ABR;2023;Ter;09h30;Palácio do Planalto;Reunião sobre ações integradas nas escolas;
+2023-04-18 22:08:52.225463;18;ABR;2023;Ter;13h00;Palácio Itamaraty;Reunião com o Presidente da Romênia, Klaus Iohannis;
+2023-04-18 22:08:52.225463;18;ABR;2023;Ter;13h30;Palácio Itamaraty;Almoço em homenagem ao Presidente da Romênia, Klaus Iohannis;
+2023-04-18 22:08:52.226462;18;ABR;2023;Ter;15h30;Palácio do Planalto;Diretor-Geral da Organização Internacional do Trabalho (OIT), Gilbert Houngbo, e o Ministro do Trabalho e Emprego, Luiz Marinho;
+2023-04-18 22:08:52.226462;18;ABR;2023;Ter;17h30;Palácio do Planalto;Assinatura do Projeto de Lei do Congresso Nacional (PLN) da Enfermagem;
+2023-04-18 22:08:52.226462;18;ABR;2023;Ter;18h00;Palácio do Planalto;Ministro da Secretaria de Relações Institucionais, Alexandre Padilha;

@@ -11,7 +11,7 @@ def main():
     )
 
     # Bucket name, object name and file path
-    BucketName = "Planalto"
+    BucketName = "planalto"
     ObjectName = "Teste"
     FilePath = "TesteDownload.txt"
 

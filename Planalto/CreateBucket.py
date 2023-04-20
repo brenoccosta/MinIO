@@ -11,7 +11,7 @@ def main():
     )
 
     # Bucket name
-    BucketName = "Planalto"
+    BucketName = "planalto"
 
     # Verify if BucketName already exists
     found = client.bucket_exists(BucketName)

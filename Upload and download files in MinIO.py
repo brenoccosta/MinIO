@@ -6,6 +6,9 @@
 from minio import Minio
 from minio.error import S3Error
 
+#####################
+### INCONSISTENTE ###
+#####################
 
 def uploadfile(client):
     print("'uploadfile' function called")

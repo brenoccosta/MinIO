@@ -40,24 +40,20 @@ def main():
     FilePath = "TesteDownloadEditUploadDeleteFile.txt"
 
     # Downloading file
-    try:
-        downloadfile(client, BucketName, ObjectName, FilePath)
-    except Exception:
-        print(Exception)
-        return False
+    client.fget_object(BucketName, ObjectName, FilePath)
 
     # Appending to file
-    with open("TesteDownloadEditUploadDeleteFile.txt") as file:
-        file.write(f"\nThis was written {datetime.today()}.\n", 'a')
+    with open("TesteDownloadEditUploadDeleteFile.txt", "a") as file:
+        file.write(f"\nThis was written {datetime.today()}.\n")
 
     # Uploading file
-    uploadfile(client, BucketName, ObjectName, FilePath)
+    client.fput_object(BucketName, ObjectName, FilePath)
 
     # Removing local file
-    Path.unlink("TesteDownloadEditUploadDeleteFile.txt")
+    Path("TesteDownloadEditUploadDeleteFile.txt").unlink()
     
 if __name__ == "__main__":
     try:
         main()
     except S3Error as exc:
-        print("error occurred.", exc)
+        print("Error occurred:", exc)

@@ -28,16 +28,6 @@ def uploadfile(client):
         client.fput_object(BucketName, ObjectName, FilePath)
         print(f"Object {ObjectName} uploaded to bucket {BucketName}.")
 
-def MinIOClient():
-    client = Minio(
-        "127.0.0.1:9000",
-        access_key="minioadmin",
-        secret_key="minioadmin",
-        secure=False
-    )
-
-    return client
-
 
 #### CRAWLER ####
 import scrapy
@@ -45,21 +35,31 @@ from pathlib import Path
 from datetime import datetime
 
 class AgendaSpider(scrapy.Spider):
-    try:
-        client = MinIOClient()
-        downloadfile(client)
-    except S3Error as exc:
-        print("error occurred.", exc)
+    # Connecting with localhost
+    client = Minio(
+        "127.0.0.1:9000",
+        access_key="minioadmin",
+        secret_key="minioadmin",
+        secure=False
+    )
+
+    # Declaring main variables
+    BucketName = "planalto"
+    ObjectName = "AgendaPresidencial"
+    FilePath = "AgendaPresidencial.txt"
+
+    # Downloading file
+    client.fget_object(BucketName, ObjectName, FilePath)
     
-    
-    # Crawler
+    # Appending to file
+    ## Crawler
     name = "agenda"
     start_urls = [
         'https://www.gov.br/planalto/pt-br'
     ]
 
     def parse(self, response):
-        AgendaFile = open("AgendaFile.txt", "a")
+        AgendaFile = open("AgendaPresidencial.txt", "a")
 
         hoje = response.xpath('//*[@id="agenda-fafe1a35-be9d-4466-bc21-df0f42169d86"]/div/div[2]/ul/li[4]')
         dia = hoje.css('div.daypicker-day::text').get()
@@ -75,5 +75,8 @@ class AgendaSpider(scrapy.Spider):
 
         AgendaFile.close()
 
-        # Removing local file
-        Path.unlink("Teste.txt")
+    # Uploading file
+    client.fput_object(BucketName, ObjectName, FilePath)
+
+    # Removing local file
+    Path("AgendaPresidencial.txt").unlink()

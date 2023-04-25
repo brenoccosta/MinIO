@@ -1,58 +1,8 @@
-#### MinIO ####
-from minio import Minio
-from minio.error import S3Error
-
-
-def downloadfile(client):
-    # Bucket name, object name and file path
-    BucketName = "Planalto"
-    ObjectName = "AgendaDoPresidente"
-    FilePath = "AgendaFile.txt"
-
-    # Verify if BucketName already exists
-    found = client.bucket_exists(BucketName)
-    if found:
-        client.fget_object(BucketName, ObjectName, FilePath)
-        print(f"Object {ObjectName} uploaded to bucket {BucketName}.")
-
-
-def uploadfile(client):
-    # Bucket name, object name and file path
-    BucketName = "Planalto"
-    ObjectName = "AgendaDoPresidente"
-    FilePath = "AgendaFile.txt"
-
-    # Verify if BucketName already exists
-    found = client.bucket_exists(BucketName)
-    if found:
-        client.fput_object(BucketName, ObjectName, FilePath)
-        print(f"Object {ObjectName} uploaded to bucket {BucketName}.")
-
-
-#### CRAWLER ####
 import scrapy
 from pathlib import Path
 from datetime import datetime
 
 class AgendaSpider(scrapy.Spider):
-    # Connecting with localhost
-    client = Minio(
-        "127.0.0.1:9000",
-        access_key="minioadmin",
-        secret_key="minioadmin",
-        secure=False
-    )
-
-    # Declaring main variables
-    BucketName = "planalto"
-    ObjectName = "AgendaPresidencial"
-    FilePath = "AgendaPresidencial.txt"
-
-    # Downloading file
-    client.fget_object(BucketName, ObjectName, FilePath)
-    
-    # Appending to file
-    ## Crawler
     name = "agenda"
     start_urls = [
         'https://www.gov.br/planalto/pt-br'
@@ -75,8 +25,3 @@ class AgendaSpider(scrapy.Spider):
 
         AgendaFile.close()
 
-    # Uploading file
-    client.fput_object(BucketName, ObjectName, FilePath)
-
-    # Removing local file
-    Path("AgendaPresidencial.txt").unlink()

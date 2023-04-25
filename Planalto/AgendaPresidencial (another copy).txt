@@ -34,3 +34,4 @@ datetime;dia;mes;ano;diadasemana;hora;local;evento;
 2023-04-24 14:04:23.982326;24;ABR;2023;Seg;12h20;Aeródromo de Alverca;Visita às instalações das Oficinas Gerais de Material Aeronáutico (OGMA), Indústria Aeronáutica de Portugal S.A.;
 2023-04-24 14:04:23.982326;24;ABR;2023;Seg;16h10;Palácio de Queluz, Sala do Trono;Cerimônia de Entrega do Prêmio Camões a Chico Buarque;
 2023-04-24 14:04:23.982326;24;ABR;2023;Seg;18h00;Residência Oficial do Brasil em Lisboa;Recepção oferecida pelo Embaixador do Brasil em Lisboa, Raimundo Carreiro, e pela Senhora Maria José Ávila;
+

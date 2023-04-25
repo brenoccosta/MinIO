@@ -12,8 +12,8 @@ def main():
 
     # Bucket name, object name and file path
     BucketName = "planalto"
-    ObjectName = "Teste"
-    FilePath = "Teste.txt"
+    ObjectName = "AgendaPresidencial"
+    FilePath = "../AgendaPresidencial.txt"
 
     # Verify if BucketName already exists
     found = client.bucket_exists(BucketName)

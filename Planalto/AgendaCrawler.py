@@ -4,8 +4,9 @@ from pathlib import Path
 from datetime import datetime
 from minio.error import S3Error
 
-
 def main():
+    starttime = datetime.today()
+    print("Starting time: ", starttime)
     # Connecting with localhost
     client = Minio(
         "127.0.0.1:9000",
@@ -26,8 +27,14 @@ def main():
     print("File downloaded")
 
     # Appending to file
+    crawlerstarttime = datetime.today()
+    print("Crawler start time: ", crawlerstarttime)
     subprocess.run("scrapy crawl agenda", shell=True)
     print("Crawler activated")
+    crawlerendtime = datetime.today()
+    print("Crawler end time: ", crawlerendtime)
+    print("Crawler time lapse: ", crawlerendtime - crawlerstarttime)
+
 
     # Uploading file
     client.fput_object(BucketName, ObjectName, FilePath)
@@ -36,6 +43,9 @@ def main():
     # Removing local file
     Path(FilePath).unlink()
     print("File deleted")
+    finishtime = datetime.today()
+    print("Finish time: ", finishtime)
+    print("Time lapse: ", finishtime - starttime)
     
 if __name__ == "__main__":
     try:

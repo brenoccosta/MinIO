@@ -86,6 +86,9 @@ name = "agenda"
 
 Permitindo a identificação do crawler desejado. Após a execução, deve-se verificar a presença do arquivo originado em `Planalto/AgendaPresidencial.txt`.
 
+#### Periodicidade
+Uma vez que o ambiente de execução está sendo uma máquina virtual Linux, fez-se uso do recurso do CRON.
+
 ## Armazenamento de dados
 ### MinIO
 A raspagem de dados elaborada acima foi designada para operar continuamente, e num possível cenário de acúmulo de muitos dados, optou-se por servir-se do MinIO no gerenciamento de tais dados.
@@ -109,3 +112,49 @@ Primeiro houve tentativas de incluir dentro do *crawler* o acesso ao servidor, p
 Uma vez que se deve executar na pasta `Planalto/` o comando `scrapy crawl agenda` pelo terminal e que se guarda o arquivo gerado no mesmo diretório, criou-se o arquivo AgendaCrawler.py nesse local, responsável por conectar-se ao MinIO e por chamar o *crawler*.
 
 #### AgendaCrawler.py
+O *script* python em questão é bastante simples e segue seis etapas nesta ordem:
+
+1. Conexão com o cliente de MinIO
+2. Declaração das variáveis (arquivo, bucket e *path*)
+3. Download do arquivo
+4. Execução do crawler por chamada de subprocesso
+5. Upload do arquivo
+6. Exclusão do arquivo local
+
+Acompanhe abaixo o código de cada etapa:
+
+``` python
+def main():
+    # Connecting with localhost
+    client = Minio(
+        "127.0.0.1:9000",
+        access_key="minioadmin",
+        secret_key="minioadmin",
+        secure=False
+    )
+    print("Client connected")
+
+    # Declaring main variables
+    BucketName = "planalto"
+    ObjectName = "AgendaPresidencial"
+    FilePath = "AgendaPresidencialTESTE.txt"
+    print("Variables declared")
+
+    # Downloading file
+    client.fget_object(BucketName, ObjectName, FilePath)
+    print("File downloaded")
+
+    # Appending to file
+    subprocess.run("scrapy crawl agenda", shell=True)
+    print("Crawler activated")
+
+    # Uploading file
+    client.fput_object(BucketName, ObjectName, FilePath)
+    print("File uploaded")
+
+    # Removing local file
+    Path(FilePath).unlink()
+    print("File deleted")
+```
+
+## Estruturando os dados com SQLite3

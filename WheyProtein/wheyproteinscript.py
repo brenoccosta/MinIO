@@ -32,4 +32,4 @@ if __name__ == "__main__":
     try:
         main()
     except S3Error:
-        subprocess.run("minio server minio/ --console-adress :9090", shell=True)
+        subprocess.run("minio server minio/ --console-address :9090 &", shell=True)

@@ -25,7 +25,7 @@ def main():
     k = Path('.').glob('*.txt')
     for p in list(k):
         o = re.sub("(?<=\').*?(?=\')", '', str(p))
-        client.fput_object(BucketName, o, o)
+        client.fput_object(BucketName, f'{mydate.strftime("%Y-%m-%d")}/{o}', o)
         Path(p).unlink()
 
 if __name__ == "__main__":

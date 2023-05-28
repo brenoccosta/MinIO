@@ -1,3 +1,4 @@
+import re
 import subprocess
 from minio import Minio
 from pathlib import Path
@@ -16,17 +17,16 @@ def main():
     # Declaring main variables
     mydate = datetime.today()
     BucketName = "wheyprotein"
-    ObjectName = f"{mydate.strftime('%Y-%m-%d')}/WheyProtein {mydate.strftime('%H:%M')}.txt"
-    FilePath = f"{mydate.strftime('%Y-%m-%d')}/WheyProtein {mydate.strftime('%H:%M')}.txt"
 
     # Running crawler
     subprocess.run("scrapy crawl wheyprotein", shell=True)
 
-    # Uploading file
-    client.fput_object(BucketName, ObjectName, FilePath)
-
-    # Removing local file
-    Path(FilePath).unlink()
+    # Uploading and removing local files
+    k = Path('.').glob('*.txt')
+    for p in list(k):
+        o = re.sub("(?<=\').*?(?=\')", '', str(p))
+        client.fput_object(BucketName, o, o)
+        Path(p).unlink()
 
 if __name__ == "__main__":
     try:

@@ -26,10 +26,12 @@ def main():
     for p in list(k):
         o = re.sub("(?<=\').*?(?=\')", '', str(p))
         client.fput_object(BucketName, f'{mydate.strftime("%Y-%m-%d")}/{o}', o)
-        Path(p).unlink()
+        # Path(p).unlink()
 
 if __name__ == "__main__":
     try:
-        main()
-    except S3Error:
         subprocess.run("minio server minio/ --console-address :9090 &", shell=True)
+    except Exception as e:
+        print(e)
+    finally:
+        main()

@@ -21,6 +21,13 @@ for bucket in buckets:
 for bucket in buckets:
     print(bucket.name, bucket.creation_date)
     o = client.list_objects(bucket.name, prefix='2023-05-28/')
+    r = client.list_objects(bucket.name, prefix='2023-05-29/')
 
 for q in o:
-    print(q.object_name)
+    t = q.object_name
+    print(t, type(t))
+#    client.fget_object(bucket.name, q, f'dataretrieved/{t}')
+for s in r:
+    t = s.object_name
+    print(t)
+#    client.fget_objetc(bucket.name, q, f'dataretrieved/{t}')

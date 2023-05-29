@@ -5,24 +5,24 @@ class AgendaSpider(scrapy.Spider):
     name = "wheyprotein"
     start_urls = [
         # Max Titatnium Top Whey 3W 900g
-        # "https://www.mercadolivre.com.br/suplemento-em-po-max-titanium-top-whey-3w-proteinas-top-whey-3w-sabor-baunilha-em-pote-de-900g/p/MLB6091177?pdp_filters=item_id:MLB2963216994"
-        # , "https://www.netshoes.com.br/whey-protein-top-whey-3w-mais-performance-900-g-max-titanium-vitamina+de+frutas-A05-0901-C20"
-        # , "https://www.maxtitanium.com.br/top-whey-3w-mais-performance-900g/p?idsku=106"
+         "https://www.mercadolivre.com.br/suplemento-em-po-max-titanium-top-whey-3w-proteinas-top-whey-3w-sabor-baunilha-em-pote-de-900g/p/MLB6091177?pdp_filters=item_id:MLB2963216994"
+         , "https://www.netshoes.com.br/whey-protein-top-whey-3w-mais-performance-900-g-max-titanium-vitamina+de+frutas-A05-0901-C20"
+         , "https://www.maxtitanium.com.br/top-whey-3w-mais-performance-900g/p?idsku=106"
         # Dux Whey Protein Concentrado 900g
-        # , "https://www.mercadolivre.com.br/suplemento-em-po-dux-nutrition-whey-protein-concentrado-proteinas-whey-protein-concentrado-sabor-baunilha-em-pote-de-900g/p/MLB15067109?pdp_filters=category:MLB264201#searchVariation=MLB15067109"
-        # , "https://www.netshoes.com.br/whey-protein-concentrado-dux-nutrition-900g-cookies-AUF-1268-037"
-        # , "https://www.duxnutrition.com/wheyproteinconcentrado-pote900g/p?skuId=2967"
+         , "https://www.mercadolivre.com.br/suplemento-em-po-dux-nutrition-whey-protein-concentrado-proteinas-whey-protein-concentrado-sabor-baunilha-em-pote-de-900g/p/MLB15067109?pdp_filters=category:MLB264201#searchVariation=MLB15067109"
+         , "https://www.netshoes.com.br/whey-protein-concentrado-dux-nutrition-900g-cookies-AUF-1268-037"
+         , "https://www.duxnutrition.com/wheyproteinconcentrado-pote900g/p?skuId=2967"
         # Integral Médica Whey 3W Super 907g
-        # , "https://produto.mercadolivre.com.br/MLB-2652411790-super-whey-protein-3w-pote-907g-integralmedica-_JM?searchVariation=174551860029"
-        # , "https://www.netshoes.com.br/whey-3w-super-907g-integralmedica-baunilha-MNH-1170-963"
-        # , "https://www.integralmedica.com.br/superwhey-3w/p"
+         , "https://produto.mercadolivre.com.br/MLB-2652411790-super-whey-protein-3w-pote-907g-integralmedica-_JM?searchVariation=174551860029"
+         , "https://www.netshoes.com.br/whey-3w-super-907g-integralmedica-baunilha-MNH-1170-963"
+         , "https://www.integralmedica.com.br/superwhey-3w/p"
         # Probiótica 3 Whey Protein 900g
-        # , "https://produto.mercadolivre.com.br/MLB-2783564400-whey-3w-whey-protein-900g-probiotica-_JM?searchVariation=175166709480"
-        # , "https://www.netshoes.com.br/whey-protein-3w-900-g-probiotica-baunilha-168-0064-963"
-        # , "https://www.probiotica.com.br/3-whey-protein-pote-900g/p?skuId=57"
-	"https://quotes.toscrape.com/"
-	, "https://quotes.toscrape.com/"
-	, "https://quotes.toscrape.com/"
+         , "https://produto.mercadolivre.com.br/MLB-2783564400-whey-3w-whey-protein-900g-probiotica-_JM?searchVariation=175166709480"
+         , "https://www.netshoes.com.br/whey-protein-3w-900-g-probiotica-baunilha-168-0064-963"
+         , "https://www.probiotica.com.br/3-whey-protein-pote-900g/p?skuId=57"
+	# "https://quotes.toscrape.com/"
+	# , "https://quotes.toscrape.com/"
+	# , "https://quotes.toscrape.com/"
     ]
 
     def parse(self, response):
@@ -44,7 +44,7 @@ class AgendaSpider(scrapy.Spider):
             peso = response.css('title::text').get()
             produto = geral.css('ul li::text').get()
             valor = response.css('div.default-price span strong::text').get()
-        
+
         elif "maxtitanium" in site:
             marca = 'Max Titanium'
             peso = 900

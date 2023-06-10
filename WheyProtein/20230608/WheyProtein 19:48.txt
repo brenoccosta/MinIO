@@ -1,0 +1,2 @@
+2023-06-08 19:48:00.013161;Dux Nutrition;900;WHEY PROTEIN CONCENTRADO - POTE 900G;239,90;https://www.duxnutrition.com/wheyproteinconcentrado-pote900g/p?skuId=2967
+2023-06-08 19:48:02.331687;Probiotica;900;3 Whey Protein Pote 900g;203,90;https://www.probiotica.com.br/3-whey-protein-pote-900g/p?skuId=57

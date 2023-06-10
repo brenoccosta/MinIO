@@ -1,0 +1,10 @@
+2023-05-29 17:20:32.037398;Probiótica;Whey Protein 3W 900 g - Probiótica - Baunilha | Netshoes; Whey Protein 3W 900 g - Probiótica;R$ 236,12;https://www.netshoes.com.br/whey-protein-3w-900-g-probiotica-baunilha-168-0064-963
+2023-05-29 17:20:32.072684;Dux Nutrition;Whey Protein Concentrado Dux Nutrition 900g - Cookies | Netshoes; Whey Protein Concentrado Dux Nutrition 900g;R$ 162,36;https://www.netshoes.com.br/whey-protein-concentrado-dux-nutrition-900g-cookies-AUF-1268-037
+2023-05-29 17:20:32.102501;Max Titanium;Whey Protein Top Whey 3W Mais Performance 900 g - Max Titanium - Vitamina de Frutas | Netshoes; Whey Protein Top Whey 3W Mais Performance 900 g - Max Titanium;R$ 199,95;https://www.netshoes.com.br/whey-protein-top-whey-3w-mais-performance-900-g-max-titanium-vitamina+de+frutas-A05-0901-C20
+2023-05-29 17:20:32.248138;Integral Médica;Whey 3W Super - 907g Integralmedica - Baunilha | Netshoes; Whey 3W Super - 907g Integralmedica;R$ 209,90;https://www.netshoes.com.br/whey-3w-super-907g-integralmedica-baunilha-MNH-1170-963
+2023-05-29 17:20:32.898232;Integral Medica;907;Whey 3W Super;R$ 162,20;https://www.integralmedica.com.br/superwhey-3w/p
+2023-05-29 17:20:32.953079;Dux Nutrition;900 g;Whey Protein Concentrado;200;https://www.mercadolivre.com.br/suplemento-em-po-dux-nutrition-whey-protein-concentrado-proteinas-whey-protein-concentrado-sabor-baunilha-em-pote-de-900g/p/MLB15067109?pdp_filters=category:MLB264201
+2023-05-29 17:20:33.053637;Integralmédica;907 g;Proteínas, Aminoácidos;165.53;https://produto.mercadolivre.com.br/MLB-2652411790-super-whey-protein-3w-pote-907g-integralmedica-_JM?searchVariation=174551860029
+2023-05-29 17:20:34.488624;Dux Nutrition;900;WHEY PROTEIN CONCENTRADO - POTE 900G;239,90;https://www.duxnutrition.com/wheyproteinconcentrado-pote900g/p?skuId=2967
+2023-05-29 17:20:35.440646;Max Titanium;900;TOP WHEY 3W ;169,15;https://www.maxtitanium.com.br/top-whey-3w-mais-performance-900g/p?idsku=106
+2023-05-29 17:20:36.070035;Probiotica;900;3 Whey Protein Pote 900g;203,90;https://www.probiotica.com.br/3-whey-protein-pote-900g/p?skuId=57

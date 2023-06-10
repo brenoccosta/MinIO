@@ -1,0 +1,41 @@
+# General table
+CREATE TABLE IF NOT EXISTS TbGeneral (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    datahora DATETIME,
+    marca VARCHAR(255),
+    peso SMALLINT,
+    produto VARCHAR(255),
+    valor DECIMAL(7,2),
+    site TEXT(M)
+)
+
+# Specific tables
+CREATE TABLE IF NOT EXISTS TbMarca (
+    id INT,
+    marca VARCHAR(255)
+)
+
+CREATE TABLE IF NOT EXISTS TbPeso (
+    id SMALLINT,
+    peso SMALLINT
+)
+
+CREATE TABLE IF NOT EXISTS TbProduto(
+    id SMALLINT,
+    idmarca SMALLINT,
+    idpeso SMALLINT,
+    produto VARCHAR(255)
+)
+
+CREATE TABLE IF NOT EXISTS TbSite (
+    id SMALLINT,
+    site TEXT(M)
+)
+
+CREATE TABLE IF NOT EXISTS TbCotacao (
+    id SMALLINT, 
+    datahora DATETIME,
+    idproduto SMALLINT,
+    valor DECIMAL(7,2),
+    idsite TEXT(M)
+)

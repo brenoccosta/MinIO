@@ -30,7 +30,8 @@ def main():
 
 if __name__ == "__main__":
     try:
-        subprocess.run("minio server minio/ --console-address :9090 &", shell=True)
+        # subprocess.run("minio server minio/ --console-address :9090 &", shell=True)
+        print("Oi")
     except Exception as e:
         print(e)
     finally:

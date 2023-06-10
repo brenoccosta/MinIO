@@ -5,8 +5,8 @@ class AgendaSpider(scrapy.Spider):
     name = "wheyprotein"
     start_urls = [
         # Max Titatnium Top Whey 3W 900g
-         "https://www.mercadolivre.com.br/suplemento-em-po-max-titanium-top-whey-3w-proteinas-top-whey-3w-sabor-baunilha-em-pote-de-900g/p/MLB6091177?pdp_filters=item_id:MLB2963216994"
-         , "https://www.netshoes.com.br/whey-protein-top-whey-3w-mais-performance-900-g-max-titanium-vitamina+de+frutas-A05-0901-C20"
+          "https://www.mercadolivre.com.br/suplemento-em-po-max-titanium-top-whey-3w-proteinas-top-whey-3w-sabor-baunilha-em-pote-de-900g/p/MLB6091177?pdp_filters=item_id:MLB2963216994"
+         "https://www.netshoes.com.br/whey-protein-top-whey-3w-mais-performance-900-g-max-titanium-vitamina+de+frutas-A05-0901-C20"
          , "https://www.maxtitanium.com.br/top-whey-3w-mais-performance-900g/p?idsku=106"
         # Dux Whey Protein Concentrado 900g
          , "https://www.mercadolivre.com.br/suplemento-em-po-dux-nutrition-whey-protein-concentrado-proteinas-whey-protein-concentrado-sabor-baunilha-em-pote-de-900g/p/MLB15067109?pdp_filters=category:MLB264201#searchVariation=MLB15067109"
@@ -49,14 +49,14 @@ class AgendaSpider(scrapy.Spider):
             marca = 'Max Titanium'
             peso = 900
             produto = response.xpath('/html/body/div[2]/div/div[1]/div/div/div/div[3]/div/div[2]/div[3]/section/div/div/div/div[8]/div/div/div[1]/div/div[1]/div/div/div/div/div[2]/div/div/div/div/table/tbody/tr/td[2]/div/p[1]/b/text()').get()
-            valor = response.xpath('/html/body/div[2]/div/div[1]/div/div/div/div[3]/div/div[1]/div[9]/section/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/span/span/span')
+            valor = response.xpath('/html/body/div[2]/div/div[1]/div/div/div/div[3]/div/div[2]/div[3]/section/div/div/div/div[1]/div/div/div[2]/div/div/div/div/div[1]/div/div/div/div/div[1]/div/div/div/span/span/span')
             valor = ''.join(valor.css("span::text").getall()[2:5])  # ['R$', '\xa0', '169', ',', '15'] >> '169,15'
 
         elif "duxnutrition" in site:
             marca = 'Dux Nutrition'
             peso = 900
             produto = response.xpath('/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div/div/section/div/div/div/div[2]/div/div/div[2]/div/div[2]/div/div/div/h1/span/text()').get()
-            valor = response.xpath('/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div/div/section/div/div/div/div[2]/div/div/div[2]/div/div[4]/div/div/div/div/div[1]/div/div[2]/span/span')
+            valor = response.xpath('/html/body/div[2]/div/div[1]/div/div/div/div[4]/div/div/div/section/div/div/div/div[2]/div/div/div[2]/div/div[4]/div/div/div/div/div[1]/div/div/span/span')
             valor = ''.join(valor.css("span::text").getall()[2:5])  # ['R$', '\xa0', '209', ',', '90'] >> '209,90'
 
         elif "integralmedica" in site:

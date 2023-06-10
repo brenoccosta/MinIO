@@ -1,0 +1,1 @@
+2023-05-30 17:56:01.933692;Quotes to Scrape;peso;produto;valor;https://quotes.toscrape.com/

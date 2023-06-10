@@ -1,0 +1,53 @@
+import re
+from minio import Minio
+
+client = Minio(
+    "127.0.0.1:9000",
+    access_key="minioadmin",
+    secret_key="minioadmin",
+    secure=False
+)
+
+buckets = client.list_buckets()
+
+for bucket in buckets:
+    # single bucket 'wheyprotein'
+    print(bucket.name, bucket.creation_date)
+
+    for o in client.list_objects(bucket.name):
+    # subfolders named after scraping date
+        print(o.object_name)
+
+        for c in client.list_objects(bucket.name, prefix=o.object_name):
+        # each time that a crawler is run a .txt object is created
+            print(f'\t{c.object_name}')
+
+            try:
+                response = client.get_object(bucket.name, c.object_name)
+                d = response.data.decode('utf-8').splitlines()
+                f = []  # [0] datahora; [1] marca; [2] peso; [3] produto; [4] valor; [5] site
+                for e in d:
+                    t = e.split(';')
+                    # Formatando o nome das marcas
+                    t[1] = t[1].title()
+                    # Extraindo o peso da descricao do produto
+                    t[2] = int(''.join(re.findall(r'\d+', t[2])).replace('3', ''))
+                    # Removendo o peso da descricao do produto
+                    b = re.findall(r'^.*?(?=9)', t[3]+'9')
+                    c = re.findall(r'^.*?(?=-)', b[0]+'-')
+                    t[3] = c[0].strip()
+                    t[3] = t[3].title()  # Formatando o nome dos produtos
+                    t[3] = t[3].partition(t[1])[0]  # Removendo a marca do nome dos produtos
+                    # Formatando o valor monetario
+                    t[4] = '.'.join(re.findall(r'\d+(?:\.\d+)?', t[4])) # REVISAR
+                    f.append(t)
+                for e in f:
+#                    print(f'Datahora: {e[0]}')
+#                    print(f'Marca: {e[1]}')
+#                    print(f'Peso: {e[2]}')
+#                    print(f'Produto: {e[3]}')
+#                    print(f'Valor: {e[4]}')
+#                    print(f'Site: {e[5]}')
+            finally:
+                response.close()
+                response.release_conn()

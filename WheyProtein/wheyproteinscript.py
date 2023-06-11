@@ -22,7 +22,7 @@ def main():
     subprocess.run("scrapy crawl wheyprotein", shell=True)
 
     # Uploading and removing local files
-    k = Path('.').glob('*.txt')
+    k = Path('.').glob('WheyProtein*.txt')
     for p in list(k):
         o = re.sub("(?<=\').*?(?=\')", '', str(p))
         client.fput_object(BucketName, f'{mydate.strftime("%Y-%m-%d")}/{o}', o)

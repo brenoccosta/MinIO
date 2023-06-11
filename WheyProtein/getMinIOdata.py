@@ -1,6 +1,7 @@
 import re
 from minio import Minio
 import mysql.connector
+from datetime import datetime
 
 # Connection with MinIO
 client = Minio(
@@ -17,7 +18,6 @@ try:
         , password='brenomysql'
         , host='localhost'
         , database='wheyproteindb'
-#        , auth_plugin='mysql_native_password'
     )
 
     cursor = cnx.cursor()
@@ -42,9 +42,11 @@ for bucket in buckets:
             try:
                 response = client.get_object(bucket.name, c.object_name)
                 d = response.data.decode('utf-8').splitlines()
-                f = []  # [0] datahora; [1] marca; [2] peso; [3] produto; [4] valor; [5] site
+                # f = []  # [0] datahora; [1] marca; [2] peso; [3] produto; [4] valor; [5] site
                 for e in d:
                     t = e.split(';')
+                    # Transformando em datetime
+                    # t[0] = datetime.strptime(t[0],'%Y-%m-%d %H:%M:%S.%f')
                     # Formatando o nome das marcas
                     t[1] = t[1].title()
                     # Extraindo o peso da descricao do produto
@@ -57,8 +59,9 @@ for bucket in buckets:
                     t[3] = t[3].partition(t[1])[0]  # Removendo a marca do nome dos produtos
                     # Formatando o valor monetario
                     t[4] = '.'.join(re.findall(r'\d+(?:\.\d+)?', t[4]))
-                    f.append(t)
-                v.append(f)
+                    if t[4] == '': t[4] = None
+                    # f.append(t)
+                    v.append(tuple(t))
 #                for e in f:
 #                    print(f'Datahora: {e[0]}')
 #                    print(f'Marca: {e[1]}')
@@ -80,23 +83,24 @@ putdata = """
 """
 testedata = """
     INSERT INTO TbTeste
-        (teste, col2)
+        (teste, col2, cal)
     VALUES
-        (%s, %s)
+        (%s, %s, %s)
 """
-# t = [[3,4],[4,5]]
+# t = [[6,7,'2023-05-29 09:17:44.153461'],[7,8,datetime.strptime('2023-05-29 09:17:44.153461','%Y-%m-%d %H:%M:%S.%f')]]
 # t = [2,3]
 try:
-    # cursor.execute(putdata, v)
-    # cursor.execute(testedata, t)
+    print(v[3])
+    cursor.executemany(putdata, v)
+#    cursor.executemany(testedata, t)
 #    for i in t:
 #        cursor.execute(testedata, i)
-    for i in v:
-        cursor.execute(putdata, i)
+#    for i in v:
+#        cursor.execute(putdata, i)
 except mysql.connector.Error as e:
     print(e)
 
 # Assuring data is commited and closing opened connections
-cnx.commit()
+# cnx.commit()
 cursor.close()
 cnx.close()

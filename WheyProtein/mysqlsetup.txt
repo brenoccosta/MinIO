@@ -6,9 +6,17 @@ CREATE TABLE IF NOT EXISTS TbGeneral (
     peso SMALLINT,
     produto VARCHAR(255),
     valor DECIMAL(7,2),
-    site TEXT(M)
+    site TEXT
 )
 
+# View
+CREATE VIEW vGeneral AS
+    SELECT marca, peso, MIN(produto), MIN(valor), AVG(valor), MAX(valor), MAX(site)
+    FROM TbGeneral
+    GROUP BY marca, peso, site
+    ORDER BY marca;
+
+### Undone
 # Specific tables
 CREATE TABLE IF NOT EXISTS TbMarca (
     id INT,

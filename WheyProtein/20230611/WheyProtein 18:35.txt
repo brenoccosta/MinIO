@@ -1,0 +1,8 @@
+2023-06-11 18:35:47.618320;Dux Nutrition;Whey Protein Concentrado Dux Nutrition 900g - Cookies | Netshoes; Whey Protein Concentrado Dux Nutrition 900g;R$ 179,90;https://www.netshoes.com.br/whey-protein-concentrado-dux-nutrition-900g-cookies-AUF-1268-037
+2023-06-11 18:35:47.673630;Probiótica;Whey Protein 3W 900 g - Probiótica - Baunilha | Netshoes; Whey Protein 3W 900 g - Probiótica;R$ 236,12;https://www.netshoes.com.br/whey-protein-3w-900-g-probiotica-baunilha-168-0064-963
+2023-06-11 18:35:47.837157;Probiótica;900 g;Whey protein;170.05;https://produto.mercadolivre.com.br/MLB-2783564400-whey-3w-whey-protein-900g-probiotica-_JM?searchVariation=175166709480
+2023-06-11 18:35:47.869088;Integral Médica;Whey 3W Super - 907g Integralmedica - Baunilha | Netshoes; Whey 3W Super - 907g Integralmedica;R$ 209,90;https://www.netshoes.com.br/whey-3w-super-907g-integralmedica-baunilha-MNH-1170-963
+2023-06-11 18:35:48.797139;Integral Medica;907;Whey 3W Super;R$ 158,29;https://www.integralmedica.com.br/superwhey-3w/p
+2023-06-11 18:35:49.314190;Dux Nutrition;900;WHEY PROTEIN CONCENTRADO - POTE 900G;239,90;https://www.duxnutrition.com/wheyproteinconcentrado-pote900g/p?skuId=2967
+2023-06-11 18:35:50.944298;Max Titanium;900;TOP WHEY 3W ;169,15;https://www.maxtitanium.com.br/top-whey-3w-mais-performance-900g/p?idsku=106
+2023-06-11 18:35:54.998744;Probiotica;900;3 Whey Protein Pote 900g;203,90;https://www.probiotica.com.br/3-whey-protein-pote-900g/p?skuId=57
